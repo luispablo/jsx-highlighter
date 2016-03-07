@@ -7,13 +7,13 @@ Small and focused library to mark with a css classed span a part of an JSX HTML 
 ## Installation
 
 ```
-npm install --save JSXHighlighter
+npm install --save jsx-highlighter
 ```
 
 ## Usage
 
 ```
-import JSXHighlighter from "JSXHighlighter";
+import JSXHighlighter from "jsx-highlighter";
 
 ...
 
