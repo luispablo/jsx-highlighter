@@ -1,7 +1,9 @@
 var React = require("react");
 
 module.exports = function (cssClassName, searchText) {
-	return function (fullText, searchTextJIT = searchText) {
+	return function (fullText, searchTextJIT) {
+		searchTextJIT = searchTextJIT || searchText;
+
 		if (fullText && searchTextJIT) {
 			var position = fullText.toUpperCase().indexOf(searchTextJIT.toUpperCase());
 
