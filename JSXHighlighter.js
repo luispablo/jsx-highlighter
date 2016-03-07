@@ -12,7 +12,9 @@ module.exports = function (cssClassName, searchText) {
 				var middle = fullText.substring(position, position + searchText.length);
 				var sufix = fullText.substring(position + searchText.length);
 
-				return <span>{prefix}<span className={cssClassName}>{middle}</span>{sufix}</span>;
+				var highlight = React.createElement("span", {className: cssClassName}, middle);
+
+				return React.createElement("span", null, prefix, highlight, sufix);
 			}
 		} else {
 			return "";
