@@ -1,16 +1,16 @@
-import React from "react";
+var React = require("react");
 
-export default (cssClassName, searchText) => {
-	return (fullText) => {
+module.exports = function (cssClassName, searchText) {
+	return function (fullText) {
 		if (fullText && searchText) {
-			const position = fullText.toUpperCase().indexOf(searchText.toUpperCase());
+			var position = fullText.toUpperCase().indexOf(searchText.toUpperCase());
 
 			if (position < 0) {
 				return fullText;
 			} else {
-				const prefix = fullText.substring(0, position);
-				const middle = fullText.substring(position, position + searchText.length);
-				const sufix = fullText.substring(position + searchText.length);
+				var prefix = fullText.substring(0, position);
+				var middle = fullText.substring(position, position + searchText.length);
+				var sufix = fullText.substring(position + searchText.length);
 
 				return <span>{prefix}<span className={cssClassName}>{middle}</span>{sufix}</span>;
 			}
