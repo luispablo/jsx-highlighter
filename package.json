@@ -1,8 +1,8 @@
 {
   "name": "jsx-highlighter",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Small and focused library to mark with a css classed span a part of an JSX HTML text.",
-  "main": "index.js",
+  "main": "JSXHighlighter.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register test/**/*.js"
   },
