@@ -19,7 +19,7 @@ module.exports = function (cssClassName, searchText) {
 				return React.createElement("span", null, prefix, highlight, sufix);
 			}
 		} else {
-			return "";
+			return fullText || "";
 		}
 	};
 }

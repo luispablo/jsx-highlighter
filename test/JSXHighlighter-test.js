@@ -15,7 +15,7 @@ describe("JSXHighlighter", () => {
 		highlight = JSXHighlighter(CSS_CLASSNAME, SEARCH_TERM);
 	});
 
-	it("Highlight search term", () => {
+	it("highlights search term", () => {
 		const html = highlight("Albert is standing");
 		expect(html).toEqualJSX(<span><span className="yellow">Albe</span>rt is standing</span>);
 	});
@@ -23,10 +23,11 @@ describe("JSXHighlighter", () => {
 		const html = highlight(undefined);
 		expect(html).toEqualJSX("");
 	});
-	it("undefined as search term returns empty string", () => {
-		const highlightSinTermino = JSXHighlighter(CSS_CLASSNAME);
-		const html = highlightSinTermino("Searched text");
-		expect(html).toEqualJSX("");
+	it("undefined as search term returns the text as is", () => {
+		const emptyHighlight = JSXHighlighter(CSS_CLASSNAME);
+		const text = "Searched text";
+		const html = emptyHighlight(text);
+		expect(html).toEqualJSX(text);
 	});
 	it("gets the searched term when highlighting", () => {
 		const jitHighlight = JSXHighlighter(CSS_CLASSNAME);
