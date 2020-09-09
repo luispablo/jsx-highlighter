@@ -1,18 +1,18 @@
 import expect from 'expect';
 import expectJSX from 'expect-jsx';
-import JSXHighlighter from "../JSXHighlighter";
+import buildHighlighter from "../buildHighlighter";
 import React from "react";
 
 expect.extend(expectJSX);
 
-describe("JSXHighlighter", () => {
+describe("buildHighlighter", () => {
 	const SEARCH_TERM = "albe";
 	const CSS_CLASSNAME = "yellow";
 
 	let highlight;
 
 	before(() => {
-		highlight = JSXHighlighter(CSS_CLASSNAME, SEARCH_TERM);
+		highlight = buildHighlighter(CSS_CLASSNAME, "%", SEARCH_TERM);
 	});
 
 	it("highlights search term", () => {
@@ -21,17 +21,17 @@ describe("JSXHighlighter", () => {
 	});
 	it("undefined highlighting returns empty string", () => {
 		const html = highlight(undefined);
-		expect(html).toEqualJSX("");
+		expect(html).toEqual(undefined);
 	});
 	it("undefined as search term returns the text as is", () => {
-		const emptyHighlight = JSXHighlighter(CSS_CLASSNAME);
+		const emptyHighlight = buildHighlighter(CSS_CLASSNAME, "%");
 		const text = "Searched text";
 		const html = emptyHighlight(text);
 		expect(html).toEqualJSX(text);
 	});
 	it("gets the searched term when highlighting", () => {
-		const jitHighlight = JSXHighlighter(CSS_CLASSNAME);
-		const html = jitHighlight("This is abandoned text", "aba");
+		const jitHighlight = buildHighlighter(CSS_CLASSNAME, "%", "aba");
+		const html = jitHighlight("This is abandoned text");
 		expect(html).toEqualJSX(<span>This is <span className="yellow">aba</span>ndoned text</span>);
 	});
 });
